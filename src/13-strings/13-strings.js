@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -23,7 +22,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 export const findHappiness = (arr) => {
   // Solution code here...
-}
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -115,7 +114,15 @@ For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thurs
 ]
 ------------------------------------------------------------------------------------------------ */
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const daysOfWeek = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+];
 
 export const sortByDay = (arr) => {
   // Solution code here...
