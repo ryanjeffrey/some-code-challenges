@@ -6,7 +6,7 @@ import {
     append
 } from '../src/02-by-val-by-ref/02-by-val-by-ref.js';
 
-const { skip } = QUnit;
+const { test, skip } = QUnit;
 
 QUnit.module('02 By Val / By Ref');
 
@@ -22,7 +22,7 @@ Run your tests from the browser using live-server, or console via: npm test
 ------------------------------------------------------------------------------------------------ */
 
 
-skip('It should append without modifying the original', (assert) => {
+test('It should append without modifying the original', (assert) => {
     const a = 'This is my story.';
     const b = appendTheEnd(a);
 
