@@ -13,8 +13,7 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 export const isNum = (input) => {
-  // Solution code here...
-
+    return /\d/.test(input); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,8 +25,7 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 export const isCapitalized = (str) => {
-  // Solution code here...
-
+    return str.match(/\b[A-Z][a-z]+/g) || [];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +35,7 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 export const citiesAtoJ = (arr) => {
-  // Solution code here...
+    return arr.filter(str => str.match(/^[A-J]/));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,8 +51,8 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 export const matchMonth = (input) => {
-  // Solution code here...
-
+    let regex = /\bOctober\b|\boctober\b|\bOct\b|\boct\b/g;
+    return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,7 +66,7 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 export const noPunctuation = str => {
-  // Solution code here...
+    return str.match(/\w+\s/g);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +82,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 export const hangman = (str) => {
-  // Solution code here...
+    let vowels = /[aeiou]/gi;
+    return str.replace(vowels, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -100,5 +99,6 @@ Hint: All of these words end with the letters "ells".
 ------------------------------------------------------------------------------------------------ */
 
 export const findShells = (str) => {
-  // Solution code here...
+    let shells = /([a-z]+ells)/g;
+    return str.match(shells);
 };
