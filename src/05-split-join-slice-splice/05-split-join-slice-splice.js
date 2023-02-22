@@ -14,7 +14,11 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 export const howMuchPencil = (str) => {
-    // Solution code here...
+    let arr = [];
+    for(let i = 0; i <= str.length; i++) {
+        arr.push(str.slice(i));
+    }
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,7 +30,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 export const wordsToCharList = (str) => {
-    // Solution code here...
+    return str.split('');
 };
 
 
@@ -43,7 +47,12 @@ Do not use split for this function.
 ------------------------------------------------------------------------------------------------ */
 
 export const listFoods = (recipe) => {
-    // Solution code here...
+    let arr = [];
+    for(let i = 0; i < recipe.ingredients.length; i++) {
+        let recipeIngredients = recipe.ingredients[i].slice(recipe.ingredients[i].indexOf(' ') + 1);
+        arr.push(recipeIngredients.slice(recipeIngredients.indexOf(' ') + 1));
+    }
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +64,7 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 export const splitFoods = (recipe) => {
-    // Solution code here...
+    return recipe.ingredients.map(ingredient => ingredient.split(' ').slice(2).join(' '));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,7 +78,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 ------------------------------------------------------------------------------------------------ */
 
 export const stepActions = (recipe) => {
-    // Solution code here...
+    let arr = [];
+    for(let i = 0; i < recipe.steps.length; i++) {
+        arr.push(recipe.steps[i].split(' ')[0]);
+    }
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,7 +99,13 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 export const removeEvenValues = (arr) => {
-    // Solution code here...
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] % 2 === 0) {
+            arr.splice(i, 1);
+            i--;
+        }
+    }
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -105,7 +124,13 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 export const removeLastCharacters = (str, numberOfCharacters) => {
-    // Solution code here...
+    if(numberOfCharacters > str.length) {
+        return '';
+    } else if(numberOfCharacters < 0) {
+        return str;
+    }
+    const newString = str.slice(0, -numberOfCharacters);
+    return newString; 
 };
 
 
@@ -116,7 +141,7 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 ------------------------------------------------------------------------------------------------ */
 
 export const totalSumCSV = (str) => {
-    // Solution code here...
+    return str.split(',').map((str) => Number(str)).reduce((a, b) => a + b);
 };
 
 
@@ -129,7 +154,8 @@ For example, removeVowels('gregor') returns 'grgr'.
 ------------------------------------------------------------------------------------------------ */
 
 export const removeVowels = (str) => {
-    // Solution code here...
+    const vowels = /[aeiou]/g;
+    return str.replace(vowels, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -143,5 +169,16 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 ------------------------------------------------------------------------------------------------ */
 
 export const extractVowels = (str) => {
-    // Solution code here...
+    const vowels = 'aeiou';
+    let removedVowels = '';
+    let removedStr = '';
+
+    for(let i = 0; i < str.length; i++) {
+        if(vowels.indexOf(str[i].toLowerCase()) !== -1) {
+            removedVowels += str[i].toLowerCase();
+        } else {
+            removedStr += str[i];
+        }
+    }
+    return [removedStr, removedVowels.split('').sort().join('')];
 };
