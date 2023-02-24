@@ -9,7 +9,9 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 export const countNumberOfElements = (arr) => {
-  // Solution code here...
+    return arr.reduce((acc) => {
+        return acc + 1;
+    }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -23,7 +25,14 @@ eye color:
 ------------------------------------------------------------------------------------------------ */
 
 export const eyeColorTally = (arr) => {
-  // Solution code here...
+    return arr.reduce((acc, next) => {
+        if(acc[next.eye_color]) {
+            acc[next.eye_color]++;
+        } else {
+            acc[next.eye_color] = 1;
+        }
+        return acc;
+    }, {});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +46,10 @@ eye color:
 ------------------------------------------------------------------------------------------------ */
 
 export const eyeColorNames = (arr) => {
-  // Solution code here...
+    return arr.reduce((acc, { eye_color, name }) => {
+        acc[eye_color] = [...(acc[eye_color] || []), name];
+        return acc;
+    }, {}); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,7 +60,9 @@ Write a function named countNumberOfChildren that, given the array of characters
 
 
 export const countNumberOfChildren = (arr) => {
-  // Solution code here...
+    return arr.reduce((acc, character) => {
+        return acc + (character.children ? character.children.length : 0);
+    }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +74,9 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 export const calculateAverage = (arr) => {
-  // Solution code here...
+    return arr.reduce((acc, num) => {
+        return { count: acc.count + 1, sum: acc.sum + num };
+    }, { count: 0, sum: 0 }).sum / arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,11 +88,24 @@ You are welcome to use the provided isPrime function.
 ------------------------------------------------------------------------------------------------ */
 
 const isPrime = (value) => {
-  // Solution code here...
+    if(value <= 1) {
+        return false;
+    }
+    for(let i = 2; i < value; i++) {
+        if(value % i === 0) {
+            return false;
+        }
+    }
+    return true;
 };
 
 export const countPrimeNumbers = (arr) => {
-  // Solution code here...
+    return arr.reduce((primeCount, curr) => {
+        if(isPrime(curr)) {
+            primeCount++;
+        }
+        return primeCount;
+    }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +119,16 @@ Hint: The accumulator should begin as { min: 0, max: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 export const effortStats = (arr) => {
-  // Solution code here...
+    return arr.reduce((acc, stat) => { 
+        const effort = stat.effort;
+        if(acc.min === 0 || effort < acc.min){ 
+            acc.min = effort;
+        } 
+        if(acc.max === 0 || effort > acc.max){ 
+            acc.max = effort;
+        } 
+        return acc;
+    }, { min: 0, max: 0 });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,5 +142,8 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 export const extractChildren = (arr) => {
-  // Solution code here...
+    return arr.filter(character => character.name.includes('a')).reduce((acc, character) => {
+        character.children && acc.push(...character.children);
+        return acc;
+    }, []);
 };
