@@ -9,7 +9,7 @@ For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
 
 export const getCourseKeys = obj => {
-    // Solution code here...
+    return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ Write a function named getHouses that returns a new array containing the names o
 ------------------------------------------------------------------------------------------------ */
 
 export const getHouseNames = houses => {
-    // Solution code here...
+    return Object.keys(houses);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,7 +30,9 @@ Write a function named getHouseWords that uses Object.values to return a new arr
 ------------------------------------------------------------------------------------------------ */
 
 export const getHouseWords = houses => {
-    // Solution code here...
+    let arr = [];
+    Object.values(houses).forEach(house => arr.push(house.words));
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,7 +42,12 @@ Write a function named getHousesWithSize that uses Object.entries to return a ne
 ------------------------------------------------------------------------------------------------ */
 
 export const getHouseSizes = houses => {
-    // Solution code here...
+    let arr = [];
+    Object.entries(houses).forEach(house => arr.push({ 
+        house: house[0], 
+        members: house[1].characters.length 
+    }));
+    return arr;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -54,8 +61,7 @@ This function should take in the house data and a house name and return a the na
 ------------------------------------------------------------------------------------------------ */
 
 export const getHouseHead = (houses, houseToFind) => {
-    // Solution code here...
-
+    return houses[houseToFind].head;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +71,9 @@ Write a function named totalCharacters that takes in the house data and returns 
 ------------------------------------------------------------------------------------------------ */
 
 export const totalCharacters = houses => {
-    // Solution code here...
+    let arr = [];
+    Object.values(houses).forEach(house => arr.push(...house.characters));
+    return arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +83,7 @@ Write a function named getHouseWordsMapped that does the same things as getHouse
 ------------------------------------------------------------------------------------------------ */
 
 export const getHouseWordsMapped = houses => {
-    // Solution code here...
+    return Object.values(houses).map(house => house.words);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,5 +93,5 @@ Write a function named totalCharactersReduced that that does the same things as 
 ------------------------------------------------------------------------------------------------ */
 
 export const totalCharactersReduced = houses => {
-    // Solution code here...
+    return Object.values(houses).reduce((acc, house) => acc + house.characters.length, 0);
 };
