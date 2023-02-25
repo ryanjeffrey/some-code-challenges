@@ -11,7 +11,15 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 export const count = (target, input) => {
-  // Solution code here...
+    return input.reduce((total, currentArray) => {
+        let sum = 0;
+        currentArray.filter(num => {
+            if(num === target) {
+                sum++;
+            }
+        });
+        return total + sum;
+    }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,7 +33,7 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 export const totalSum = (input) => {
-  // Solution code here...
+    return input.flat().reduce((a, b) => a + b);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,7 +49,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 export const divisibleByFiveTwoToThePower = (input) => {
-// Solution code here...
+    let result = [];
+    for(let i = 0; i < input.length; i++) {
+        let subResult = [];
+        for(let j = 0; j < input[i].length; j++) {
+            if(typeof input[i][j] === 'number' && input[i][j] % 5 === 0) {
+                subResult.push(Math.pow(2, input[i][j]));
+            }
+        }
+        result.push(subResult);
+    }
+    return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,7 +74,13 @@ For example, "Luke Skywalker and C-3PO".
 ------------------------------------------------------------------------------------------------ */
 
 export const findTallerThan = (minHeight, data) => {
-  // Solution code here...
+    let arr = [];
+    data.forEach(character => {
+        if(character.height > minHeight) {
+            arr.push(character.name);
+        }
+    });
+    return arr.join(' and ');
 };
 
 
@@ -67,5 +91,6 @@ Write a function named findShortestName that, given the Star Wars data from Chal
 ------------------------------------------------------------------------------------------------ */
 
 export const findShortestName = (data) => {
-  // Solution code here...
+    const sorted = data.sort((a, b) => a.height - b.height);
+    return sorted[0].name;
 };
