@@ -9,7 +9,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 export const firstLetters = (arr) => {
-  // Solution code here...
+    return arr.map(string => string[0]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 export const findHappiness = (arr) => {
-  // Solution code here...
+    return arr.filter(string => string.includes(':)'));
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -32,7 +32,7 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 export const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+    return arr.map(phoneNumber => phoneNumber.replace(/[()\-\s]/g, ''));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,7 +44,11 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 export const onlyOddChars = (str) => {
-  // Solution code here...
+    let arr = [];
+    str.split('').forEach((char, idx) => {
+        if(idx % 2 !== 0) arr.push(char);
+    });
+    return arr.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,7 +58,9 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 export const allHappy = (arr) => {
-  // Solution code here...
+    for(let i = 0; i < arr.length; i++) {
+        return arr[i].includes(':)');
+    }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,7 +70,7 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 export const findAnything = (arr, target) => {
-  // Solution code here...
+    return arr.filter(string => string.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -74,7 +80,9 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 export const findEvery = (arr, target) => {
-  // Solution code here...
+    for(let i = 0; i < arr.length; i++) {
+        return arr[i].includes(target);
+    }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +98,15 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 ------------------------------------------------------------------------------------------------ */
 
 export const unenrollBrook = (arr) => {
-  // Solution code here...
+    let finalArr = [];
+    for(let i = 0; i < arr.length; i++) {
+        let subArr = [];
+        for(let j = 0; j < arr[i].length; j++) {
+            if(!arr[i][j].includes('Brook')) subArr.push(arr[i][j]);
+        }
+        finalArr.push(subArr);
+    }
+    return finalArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,7 +141,15 @@ const daysOfWeek = [
 ];
 
 export const sortByDay = (arr) => {
-  // Solution code here...
+    return daysOfWeek.map((day) => {
+        let dayArr = [];
+        arr.forEach((item) => {
+            if(item.includes(day)) {
+                dayArr.push(item);
+            }
+        });
+        return dayArr;
+    });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -137,5 +161,5 @@ For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 ------------------------------------------------------------------------------------------------ */
 
 export const characterByIndex = (arr) => {
-  // Solution code here...
+    return arr.map((item, idx) => item[idx]);
 };
