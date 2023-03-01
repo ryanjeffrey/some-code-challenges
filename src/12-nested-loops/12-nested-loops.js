@@ -13,7 +13,15 @@ Return the array of the total number of cookies sold per hour for all of the sto
 ------------------------------------------------------------------------------------------------ */
 
 export const grandTotal = (stores) => {
-  // Solution code here...
+    let arr = [];
+    for(let i = 0; i < stores[0].length; i++) {
+        let storeCount = 0;
+        for(let j = 0; j < stores.length; j++) {
+            storeCount += stores[j][i];
+        }
+        arr.push(storeCount);
+    }
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,7 +35,9 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 export const salesData = (hours, data) => {
-// Solution code here...
+    let arr = [];
+    data.forEach((hour, idx) => arr.push({ sales: `${data[idx]} cookies`, time: hours[idx] }));
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +47,15 @@ Write a function named howManyTreats that will return the quantity of treats you
 ------------------------------------------------------------------------------------------------ */
 
 export const howManyTreats = (arr) => {
-  // Solution code here...
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i].store === 'Pet store') {
+            for(let j = 0; j < arr[i].items.length; j++) {
+                if(arr[i].items[j].name === 'Treats') {
+                    return arr[i].items[j].quantity;
+                }
+            }
+        }
+    } 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,7 +77,9 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 export const battleship = (board, row, col) => {
-// Solution code here...
+    if(board[row][col] === '#') {
+        return 'hit';
+    } else return 'miss';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,7 +91,14 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 export const calculateProduct = (numbers) => {
-  // Solution code here...
+    let product = 1; 
+    for(let i = 0; i < numbers.length; i++) {
+        let innerArr = numbers[i]; 
+        for(let j = 0; j < innerArr.length; j++) { 
+            product *= innerArr[j]; 
+        } 
+    } 
+    return product;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,7 +110,13 @@ Calculate the average daily temperature during that entire period. Your output s
 ------------------------------------------------------------------------------------------------ */
 
 export const averageDailyTemperature = (weather) => {
-  // Solution code here...
+    let totalTemps = 0;
+    for(let i = 0; i < weather.length; i++) {
+        for(let j = 0; j < weather[i].length; j++) {
+            totalTemps += weather[i][j];
+        }
+    }
+    return totalTemps / (weather.length * weather[0].length); 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,7 +130,14 @@ For example, in the data set below, the lowest weekly average is 46, which is th
 ------------------------------------------------------------------------------------------------ */
 
 export const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+    let lowest = weather[0].reduce((acc, cur) => acc + cur) / weather[0].length;
+    for(let i = 1; i < weather.length; i++) {
+        let avg = weather[i].reduce((acc, cur) => acc + cur) / weather[i].length;
+        if(avg < lowest) {
+            lowest = avg;
+        }
+    }
+    return lowest; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,5 +153,15 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 export const excel = (str) => {
-  // Solution code here...
+    let total = [];
+    let rows = str.split('\n'); 
+    for(let i = 0; i < rows.length; i++) {
+        let values = rows[i].split(',');
+        let rowTotal = 0; 
+        for(let j = 0; j < values.length; j++) { 
+            rowTotal += parseInt(values[j]); 
+        } 
+        total.push(rowTotal);
+    } 
+    return total;
 };
