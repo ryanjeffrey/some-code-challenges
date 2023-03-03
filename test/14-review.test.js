@@ -6,7 +6,7 @@ import {
     detectTicTacToeWin
 } from '../src/14-review/14-review.js';
 
-const { skip } = QUnit;
+const { test, skip } = QUnit;
 
 QUnit.module('14 Review');
 
@@ -22,7 +22,7 @@ Run your tests from the browser using live-server, or console via: npm test
 ------------------------------------------------------------------------------------------------ */
 
 
-skip('It should convert each word to title case', assert => {
+test('It should convert each word to title case', assert => {
     const words = ['apple', 'banana', 'MacGyver'];
     assert.deepEqual(toTitleCase(words), ['Apple', 'Banana', 'MacGyver']);
     assert.deepEqual(toTitleCase([]), []);
@@ -90,12 +90,12 @@ const starWarsData = [{
     gender: 'n/a'
 }];
 
-skip('It should return only characters that are bigger than Luke', assert => {
+test('It should return only characters that are bigger than Luke', assert => {
     assert.equal(biggerThanLuke(starWarsData), 'Darth Vader - Pex Kylar');
     assert.equal(biggerThanLuke([]), '');
 });
 
-skip('It should sort items by a price', assert => {
+test('It should sort items by a price', assert => {
 
     assert.deepEqual(sortBy('price', [
         { name: 'Sweatshirt', price: 45 },
@@ -109,7 +109,7 @@ skip('It should sort items by a price', assert => {
 
 });
 
-skip('It should sort items by name', assert => {
+test('It should sort items by name', assert => {
 
     assert.deepEqual(sortBy('name', [
         { name: 'Sweatshirt', price: 45 },
@@ -122,7 +122,7 @@ skip('It should sort items by name', assert => {
     ]);
 });
 
-skip('It should check if url is https', assert => {
+test('It should check if url is https', assert => {
     assert.equal(isSecure('http://www.insecure.com'), false);
     assert.equal(isSecure('https://secure.com'), true);
     assert.equal(isSecure('https:/missingslash.org'), false);

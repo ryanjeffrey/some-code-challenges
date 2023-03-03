@@ -9,7 +9,7 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 export const toTitleCase = (arr) => {
-  // Solution code here...
+    return arr.map(str => str.charAt(0).toUpperCase() + str.substr(1));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -23,7 +23,13 @@ For example, "Lando Calrisian - Boba Fett - Princess Amidala".
 ------------------------------------------------------------------------------------------------ */
 
 export const biggerThanLuke = (arr) => {
-  // Solution code here...
+    let resultArr = [];
+    arr.forEach(character => {
+        if(Number(character.mass) > Number(arr[0].mass)) {
+            resultArr.push(character.name);
+        }
+    });
+    return resultArr.join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,7 +47,11 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 export const sortBy = (property, arr) => {
-  // Solution code here...
+    return arr.sort((a, b) => {
+        if(a[property] > b[property]) {
+            return 1;
+        } else return -1;
+    });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -58,7 +68,7 @@ https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 
 export const isSecure = (url) => { 
-// Solution code here...
+    return url.startsWith('https://');
 };
 
 /* ------------------------------------------------------------------------------------------------
